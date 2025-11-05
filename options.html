@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>tabDirect - Options</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style>
+      :root {
+        --color-base-100: #FFFFFF;
+        --color-base-200: color-mix(in oklab, var(--color-neutral), #FFF 95%);
+        --color-base-300: color-mix(in oklab, var(--color-neutral), #FFF 85%);
+        --color-base-content: color-mix(in oklab, var(--color-neutral), #000 50%);
+        --color-primary: oklch(45% 0.24 277.023);
+        --color-primary-content: oklch(93% 0.034 272.788);
+        --color-secondary: oklch(65% 0.241 354.308);
+        --color-secondary-content: oklch(94% 0.028 342.258);
+        --color-accent: oklch(77% 0.152 181.912);
+        --color-accent-content: oklch(38% 0.063 188.416);
+        --color-neutral: #666;
+        --color-neutral-content: #FFF;
+        --color-info: oklch(74% 0.16 232.661);
+        --color-info-content: oklch(29% 0.066 243.157);
+        --color-success: oklch(76% 0.177 163.223);
+        --color-success-content: oklch(37% 0.077 168.94);
+        --color-warning: oklch(82% 0.189 84.429);
+        --color-warning-content: oklch(41% 0.112 45.904);
+        --color-error: oklch(71% 0.194 13.428);
+        --color-error-content: oklch(27% 0.105 12.094);
+        --radius-selector: 0.5rem;
+        --radius-field: 0.25rem;
+        --radius-box: 0.5rem;
+        --size-selector: 0.25rem;
+        --size-field: 0.25rem;
+        --border: 1px;
+        --depth: 0;
+        --noise: 0;
+      }
+      *, *::before, *::after { box-sizing: border-box; }
+      * { margin: 0; }
+      @media (prefers-reduced-motion: no-preference) {
+        html { interpolate-size: allow-keywords; }
+      }
+      html { background: transparent; }
+      body { padding: 1rem; background-color: var(--color-base-100); color: var(--color-base-content); line-height: 1.5; -webkit-font-smoothing: antialiased; }
+      img, picture, video, canvas, svg { display: block; max-width: 100%; }
+      input, button, textarea, select { font: inherit; }
+      p { text-wrap: pretty; }
+      h1, h2, h3, h4, h5, h6 { text-wrap: balance; font-weight: 700; }
+      header { margin: 0 auto; padding: 2rem 0; width: 100%; max-width: 30rem; flex-shrink: 0; text-align: center; }
+      main { flex-grow: 1; display: flex; align-items: start; justify-content: center; }
+      section { width: 100%; max-width: 30rem; }
+      footer { flex-shrink: 0; }
+      :focus-visible {
+        outline: 2px solid var(--color-primary);
+        outline-offset: 1px;
+      }
+      .heading {
+        font-weight: 900;
+        text-wrap: nowrap;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 1rem;
+        &::before,&::after {
+          content: '';
+          width: 100%;
+          height: 0.125rem;
+          background-color: currentColor;
+          opacity: .25;
+        }
+      }
+      .cover {
+        width: 100%;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+      }
+      .form-control {
+        display: flex;
+        flex-direction: column;
+      }
+      .label {
+        padding: .5rem 0;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        -webkit-user-select: none;
+        user-select: none;
+      }
+      .label-text {
+        font-size: .875rem;
+        line-height: 1.25rem;
+      }
+      .input {
+        --size: calc(.25rem * 10);
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        padding-left: 1rem;
+        padding-right: 1rem;
+        border: 1px solid #CCC;
+        height: var(--size);
+        font-size: 1rem;
+        line-height: 2;
+        flex-shrink: 1;
+        border-radius: var(--radius-field);
+        &::placeholder {
+          color: var(--color-neutral);
+        }
+      }
+      .btn {
+        --size: calc(.25rem * 10);
+        --btn-bg: var(--color-base-200);
+        --btn-fg: var(--color-base-content);
+        --btn-p: 1rem;
+        --btn-border: var(--color-base-300);
+        padding-inline: var(--btn-p);
+        border-width: var(--border);
+        border-style: solid;
+        border-color: var(--btn-border);
+        height: var(--size);
+        text-align: center;
+        vertical-align: middle;
+        font-size: .875rem;
+        font-weight: 600;
+        color: var(--btn-fg);
+        background-color: var(--btn-bg);
+        display: inline-flex;
+        flex-wrap: nowrap;
+        flex-shrink: 0;
+        justify-content: center;
+        align-items: center;
+        gap: .375rem;
+        touch-action: manipulation;
+        user-select: none;
+        cursor: pointer;
+        border-radius: var(--radius-field);
+        box-shadow: 0 .5px 0 .5px oklch(100% 0 0 / calc(var(--depth) * 6%)) inset, var(--btn-shadow);
+        transition-property: color, background-color, border-color, box-shadow;
+        transition-duration: .2s;
+        transition-timing-function: cubic-bezier(0, 0, .2, 1);
+        &:hover {
+          background-color: var(--color-base-300);
+        }
+      }
+      .join { display: grid; grid-template-columns: 1fr auto; gap: .375rem; }
+      .hint { color: var(--color-neutral); }
+      .ok { color: var(--color-success); }
+      .err { color: var(--color-error); }
+    </style>
+  </head>
+<body>
+  <div class="cover">
+    <header><h1 class="heading">tabDirect</h1></header>
+    <main>
+      <section>
+        <div class="form-control">
+          <label class="label" for="url"><span class="label-text">URL to open on new tabs</span></label>
+          <div class="join">
+            <input id="url" type="url" placeholder="https://your.site/" class="input" required />
+            <button id="save" class="btn">Save</button>
+          </div>
+          <div class="label"><span id="status" class="label-text hint"></span></div>
+          <div class="label"><span class="hint">Must begin with <code>http://</code> or <code>https://</code>. <code>chrome://</code> and file URLs are not allowed.</span></div>
+        </div>
+      </section>
+    </main>
+    <footer></footer>
+  </div>
+
+  <script src="options.js"></script>
+</body>
+</html>
